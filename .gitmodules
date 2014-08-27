@@ -1,0 +1,9 @@
+[submodule "submodules/sharpen"]
+	path = submodules/sharpen
+	url = https://github.com/moljac/sharpen.git
+[submodule "submodules/XobotOS"]
+	path = submodules/XobotOS
+	url = https://github.com/moljac/XobotOS.git
+[submodule "submodules/ngit"]
+	path = submodules/ngit
+	url = https://github.com/mono/ngit.git

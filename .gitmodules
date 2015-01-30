@@ -7,3 +7,6 @@
 [submodule "submodules/ngit"]
 	path = submodules/ngit
 	url = https://github.com/mono/ngit.git
+[submodule "submodules/couchbase-lite-net"]
+	path = submodules/couchbase-lite-net
+	url = https://github.com/couchbase/couchbase-lite-net.git

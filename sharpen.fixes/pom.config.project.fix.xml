@@ -1,0 +1,133 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>sharpen</groupId>
+  <artifactId>sharpenconfig</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>sharpenconfig</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <finalName>MEConfiguration.${project.artifactId}</finalName>
+	 <!--<finalName>${project.artifactId}-${project.version}</finalName>-->
+      <!--<finalName>${project.artifactId}</finalName>-->
+  </properties>
+
+    <repositories>
+        <repository>
+            <id>in-project</id>
+            <name>In Project Repo</name>
+            <url>file://${project.basedir}/sharpen.config/lib</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>sharpen</groupId>
+            <artifactId>sharpencore</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+  <build>
+   <directory>sharpen.config/target</directory>
+    <outputDirectory>sharpen.config/target/classes</outputDirectory>
+    <finalName>${finalName}</finalName>
+    <testOutputDirectory>sharpen.config/target/testcases</testOutputDirectory>
+    <sourceDirectory>sharpen.config/src</sourceDirectory>
+    <scriptSourceDirectory>sharpen.config/src</scriptSourceDirectory>
+    <!--<testSourceDirectory>sharpen.ui.tests/src</testSourceDirectory>-->
+    <resources>
+      <resource>
+        <directory>sharpen.config/src/resources</directory>
+      </resource>
+    </resources>
+    <!--<testResources>-->
+      <!--<testResource>-->
+        <!--<directory>sharpen.ui.tests/testcases</directory>-->
+      <!--</testResource>-->
+    <!--</testResources>-->
+
+  <plugins>
+	<!--
+	moljac/moljac++/moljacsharp
+
+	by default maven uses sorde 1.3 (java 3???) thus missing a lot of modern
+	java features.
+	Following errors might occur:
+	
+	error: generics are not supported in -source 1.3
+	error: for-each loops are not supported in -source 1.3
+	error: annotations are not supported in -source 1.3
+	error: variable-arity methods are not supported in -source 1.3
+		
+	[ERROR] sharpen/src/main/sharpen/core/csharp/ast/CSAbstractInvocation.java:[28,15] 
+			error: generics are not supported in -source 1.3
+	[ERROR] (use -source 5 or higher to enable generics)
+	[ERROR] sharpen/src/main/sharpen/core/csharp/ast/CSAbstractInvocation.java:[34,24] 
+			error: for-each loops are not supported in -source 1.3
+	[ERROR] (use -source 5 or higher to enable for-each loops)
+	[ERROR] sharpen/src/main/sharpen/core/framework/DynamicVariable.java:[26,28] 
+			error: generics are not supported in -source 1.3
+	[ERROR] (use -source 5 or higher to enable generics)
+	[ERROR] sharpen/src/main/sharpen/core/csharp/ast/CSForStatement.java:[30,13] 
+			error: generics are not supported in -source 1.3
+	[ERROR] (use -source 5 or higher to enable generics)
+	[ERROR] sharpen/src/main/sharpen/core/csharp/ast/CSField.java:[29,12] 
+			error: generics are not supported in -source 1.3
+	[ERROR] (use -source 5 or higher to enable generics)
+	[ERROR] sharpen/src/main/sharpen/core/framework/ConversionBatch.java:[25,3] 
+			error: annotations are not supported in -source 1.3
+	[ERROR] (use -source 5 or higher to enable annotations)
+	[ERROR] sharpen/src/main/sharpen/core/framework/ConversionBatch.java:[26,5] 
+			error: generics are not supported in -source 1.3
+	[ERROR] (use -source 5 or higher to enable generics)
+	[ERROR] sharpen/src/main/sharpen/core/framework/ConversionBatch.java:[48,34] 
+			error: variable-arity methods are not supported in -source 1.3
+
+
+	Added this into pom.xml:
+		//build/plugins
+	-->
+	<plugin>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>2.3.2</version>
+		<configuration>
+			<source>1.7</source>
+			<target>1.7</target>
+		</configuration>
+	</plugin>
+
+
+
+	<plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>sharpen.config.MEConfiguration</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+	  
+	<executions>
+		<execution>
+		  <id>make-assembly</id> <!-- this is used for inheritance merges -->
+		  <phase>package</phase> <!-- bind to the packaging phase -->
+		  <goals>
+			<goal>single</goal>
+		  </goals>
+		</execution>
+    </executions>
+      </plugin>	
+  </plugins>
+ 
+</build>
+</project>

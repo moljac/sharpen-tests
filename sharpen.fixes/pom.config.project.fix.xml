@@ -54,6 +54,8 @@
 
   <plugins>
 	<!--
+	==============================================================================================
+	begin 	FIX
 	moljac/moljac++/moljacsharp
 
 	by default maven uses sorde 1.3 (java 3???) thus missing a lot of modern
@@ -101,7 +103,10 @@
 			<target>1.7</target>
 		</configuration>
 	</plugin>
-
+	<!--
+	end	FIX
+	==============================================================================================
+	-->
 
 
 	<plugin>
